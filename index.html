@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     SALTMARSH — Home page (index.html)
+     --------------------------------------------------------------------------
+     "index.html" is the file a web server shows by default, so this is the
+     page people land on when they visit the site's address.
+
+     Page structure:
+       <header>  site header + navigation (same on every page)
+       <main>    1. Hero  2. Intro + highlights  3. Signature dishes  4. Visit us
+       <footer>  site footer (same on every page)
+     ========================================================================== -->
+<html lang="en-GB">
+<head>
+  <!-- Character encoding: lets the page show £, é, – and other symbols. -->
+  <meta charset="UTF-8">
+
+  <!-- Makes the page scale properly on phones instead of showing a
+       zoomed-out desktop version. Essential for responsive design. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Shown in Google results and when the link is shared. -->
+  <meta name="description" content="Saltmarsh is a seafood and wood-fire restaurant on Whitstable harbour, serving Seasalter oysters, day-boat fish and Kentish produce.">
+
+  <!-- Colours the browser's address bar on some phones. -->
+  <meta name="theme-color" content="#13222a">
+
+  <title>Saltmarsh — Seafood &amp; Wood Fire, Whitstable</title>
+
+  <!-- Favicon (the tiny icon in the browser tab), drawn as an inline SVG. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2313222a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23c09040'%3ES%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Fonts. "preconnect" starts the connection early so fonts load faster. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+
+  <!-- Our own stylesheet, shared by every page. -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- Lets keyboard users jump straight past the navigation. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== SITE HEADER ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Saltmarsh home page">
+        <span class="logo__name">Saltmarsh</span>
+        <span class="logo__place">Whitstable</span>
+      </a>
+
+      <!-- Hamburger button: only visible on small screens (see styles.css §5).
+           aria-controls links it to the nav it opens; aria-expanded says
+           whether it's currently open. main.js keeps these up to date. -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bars"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+          <!-- aria-current="page" marks the page we're on (styled with an underline). -->
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="book.html">Visit</a></li>
+        </ul>
+        <a class="btn btn--ink" href="book.html">Book a table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== 1. HERO ===================== -->
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="container home-hero__grid">
+        <div>
+          <p class="label load-in">Seafood &amp; wood fire on Whitstable harbour</p>
+
+          <h1 id="hero-title" class="load-in load-in--2">From the tide <em>to the fire</em></h1>
+
+          <p class="home-hero__lead load-in load-in--3">
+            A 46-cover harbourside restaurant serving Seasalter oysters, day-boat
+            fish and Kentish produce, cooked simply over an open oak fire.
+          </p>
+
+          <div class="home-hero__actions load-in load-in--3">
+            <a class="btn btn--primary" href="book.html">Book a table</a>
+            <a class="btn btn--ghost" href="menu.html">See the menu</a>
+          </div>
+
+          <!-- main.js fills in the text, e.g. "Open now · until 22:00". -->
+          <p class="status-pill load-in load-in--3" data-open-status style="margin-top: 2rem">
+            <span class="status-pill__dot" aria-hidden="true"></span>
+            <span class="status-pill__text">Checking opening hours…</span>
+          </p>
+        </div>
+
+        <div class="home-hero__media load-in load-in--2">
+          <!-- data-label is the text shown if the photo file is missing. -->
+          <figure class="photo photo--tall" data-label="Photo: rock oysters on crushed ice">
+            <img src="images/hero-oysters.jpg" alt="A tray of rock oysters on crushed ice with lemon halves" width="800" height="1000">
+          </figure>
+          <p class="tide-note">
+            <span>Oysters from the Seasalter beds, 2 miles west</span>
+            <span>Picked at low tide</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== 2. INTRO + HIGHLIGHTS ===================== -->
+    <section class="section" aria-labelledby="intro-title">
+      <div class="container">
+        <div class="intro__grid reveal">
+          <h2 id="intro-title" class="intro__statement">
+            We write the menu each morning, once the boats are in and the
+            oyster beds have been picked.
+          </h2>
+          <div class="prose">
+            <p>
+              What lands on the harbour wall decides what we cook. Plaice, bream
+              and squid from the Whitstable day boats, lamb from Romney Marsh,
+              cheese and fruit from farms across Kent.
+            </p>
+            <p><a class="text-link" href="about.html">Read our story</a></p>
+          </div>
+        </div>
+
+        <!-- An ordered list, because the numbering (01, 02, 03) is part of the design. -->
+        <ol class="highlights">
+          <li class="highlight reveal">
+            <h3>Oysters by the tide</h3>
+            <p>Native oysters from September to April, rock oysters all year. When the tide is wrong, there are none.</p>
+          </li>
+          <li class="highlight reveal">
+            <h3>An oak-fired kitchen</h3>
+            <p>Almost everything passes over our open fire: whole fish, hispi cabbage, even the leeks for the romesco.</p>
+          </li>
+          <li class="highlight reveal">
+            <h3>Within 30 miles</h3>
+            <p>Our fish, meat, dairy and most of our vegetables come from within 30 miles of the harbour.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ===================== 3. SIGNATURE DISHES ===================== -->
+    <section class="section section--dark" aria-labelledby="dishes-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="label">On the menu this week</p>
+          <h2 id="dishes-title">Three dishes we're known for</h2>
+          <p>The menu changes with the catch, but these three rarely leave it.</p>
+        </div>
+
+        <div class="dish-cards">
+          <article class="dish-card reveal">
+            <figure class="photo photo--marsh" data-label="Photo: whole grilled plaice">
+              <img src="images/dish-plaice.jpg" alt="Whole grilled plaice with brown shrimp butter" loading="lazy" width="800" height="600">
+            </figure>
+            <div class="dish-card__head">
+              <h3>Whole grilled plaice</h3>
+              <span class="price">£26</span>
+            </div>
+            <p>Brown shrimp butter, capers and charred lemon. Off the bone at the table if you'd like.</p>
+          </article>
+
+          <article class="dish-card reveal">
+            <figure class="photo" data-label="Photo: wood-roast leeks">
+              <img src="images/dish-leeks.jpg" alt="Charred leeks with hazelnut romesco" loading="lazy" width="800" height="600">
+            </figure>
+            <div class="dish-card__head">
+              <h3>Wood-roast leeks</h3>
+              <span class="price">£9</span>
+            </div>
+            <p>Hazelnut romesco and aged Kentish cheddar. Our most-ordered vegetarian plate.</p>
+          </article>
+
+          <article class="dish-card reveal">
+            <figure class="photo photo--sand" data-label="Photo: burnt honey tart">
+              <img src="images/dish-tart.jpg" alt="A slice of burnt honey tart with crème fraîche" loading="lazy" width="800" height="600">
+            </figure>
+            <div class="dish-card__head">
+              <h3>Burnt honey tart</h3>
+              <span class="price">£8</span>
+            </div>
+            <p>Made with honey from hives on the Blean, served with a spoon of crème fraîche.</p>
+          </article>
+        </div>
+
+        <p class="section-foot">
+          <a class="btn btn--ghost" href="menu.html">View the full menu</a>
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ===================== 4. VISIT US ===================== -->
+    <section class="section" aria-labelledby="visit-title">
+      <div class="container visit__grid">
+        <div class="visit__block reveal">
+          <h2 id="visit-title">Find us on the harbour</h2>
+          <!-- <address> is the correct HTML element for contact details. -->
+          <address>
+            14 Harbour Street<br>
+            Whitstable, Kent CT5 1AQ
+          </address>
+          <p class="field__hint">Five minutes' walk from Whitstable station. Pay-and-display parking on the harbour.</p>
+        </div>
+
+        <div class="visit__block reveal">
+          <h4>Opening hours</h4>
+          <!-- A description list (<dl>): each <dt> is a day, each <dd> its hours.
+               data-day matches JavaScript's day numbers (0 = Sunday) so
+               main.js can highlight today. -->
+          <dl class="hours-list">
+            <dt data-day="1">Monday</dt>    <dd data-day="1">Closed</dd>
+            <dt data-day="2">Tuesday</dt>   <dd data-day="2">Closed</dd>
+            <dt data-day="3">Wednesday</dt> <dd data-day="3">17:30–22:00</dd>
+            <dt data-day="4">Thursday</dt>  <dd data-day="4">17:30–22:00</dd>
+            <dt data-day="5">Friday</dt>    <dd data-day="5">12:00–15:00, 17:30–22:30</dd>
+            <dt data-day="6">Saturday</dt>  <dd data-day="6">12:00–15:00, 17:30–22:30</dd>
+            <dt data-day="0">Sunday</dt>    <dd data-day="0">12:00–16:00</dd>
+          </dl>
+        </div>
+
+        <div class="visit__block reveal">
+          <h4>Reservations</h4>
+          <p>Tables for 1 to 8 can be booked online. We keep the bar for walk-ins.</p>
+          <p><a class="btn btn--ink" href="book.html">Book a table</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== SITE FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="index.html">
+            <span class="logo__name">Saltmarsh</span>
+            <span class="logo__place">Whitstable</span>
+          </a>
+          <p style="margin-top: 1rem">Seafood &amp; wood fire on the harbour since 2019.</p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">Our story</a></li>
+            <li><a href="book.html">Book a table</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>14 Harbour Street, Whitstable CT5 1AQ</li>
+            <li>01632 960 418</li>
+            <li>hello@saltmarsh.example</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Kitchen hours</h4>
+          <ul>
+            <li>Wed–Thu · dinner</li>
+            <li>Fri–Sat · lunch &amp; dinner</li>
+            <li>Sun · lunch</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <!-- main.js puts the current year in [data-year]. -->
+        <p>© <span data-year>2026</span> Saltmarsh. A fictional restaurant.</p>
+        <p>Designed and built by Molly Hoy as a portfolio project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts go last, so the HTML above has loaded before they run. -->
+  <script src="js/main.js"></script>
+</body>
+</html>

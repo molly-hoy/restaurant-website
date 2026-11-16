@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     SALTMARSH — Our story (about.html)
+     --------------------------------------------------------------------------
+     Sections: 1. Page hero  2. Story  3. Suppliers  4. Photo gallery
+     The gallery opens a "lightbox" (full-screen photo viewer) built in
+     about.js.
+     ========================================================================== -->
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The story of Saltmarsh, a harbourside seafood restaurant in Whitstable, and the Kent farmers, fishers and growers we cook with.">
+  <meta name="theme-color" content="#13222a">
+  <title>Our story — Saltmarsh, Whitstable</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2313222a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23c09040'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== SITE HEADER ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Saltmarsh home page">
+        <span class="logo__name">Saltmarsh</span>
+        <span class="logo__place">Whitstable</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bars"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html" aria-current="page">Our story</a></li>
+          <li><a href="book.html">Visit</a></li>
+        </ul>
+        <a class="btn btn--ink" href="book.html">Book a table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== 1. PAGE HERO ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="label">Since 2019</p>
+        <h1>A small kitchen by the harbour wall</h1>
+        <p>Saltmarsh began as a six-seat oyster counter in a converted net store. It now seats 46, and still opens the oysters at the counter.</p>
+      </div>
+    </section>
+
+
+    <!-- ===================== 2. STORY ===================== -->
+    <section class="section" aria-labelledby="story-title">
+      <div class="container story__grid">
+        <div class="story__media reveal">
+          <figure class="photo photo--tall photo--marsh" data-label="Photo: the dining room at dusk">
+            <img src="images/dining-room.jpg" alt="The Saltmarsh dining room at dusk, with candles on wooden tables" loading="lazy" width="800" height="1000">
+          </figure>
+          <figure class="photo photo--square photo--sand" data-label="Photo: chef at the fire">
+            <img src="images/chef-fire.jpg" alt="The head chef turning fish over the oak fire" loading="lazy" width="600" height="600">
+          </figure>
+        </div>
+
+        <div class="prose reveal">
+          <p class="label">Our story</p>
+          <h2 id="story-title" style="font-size: var(--step-3)">Cooking what the coast gives us</h2>
+          <p class="lead">
+            Head chef Tom Ashdown grew up two streets from the harbour and
+            spent ten years cooking in London before coming home.
+          </p>
+          <p>
+            The idea was simple: cook the fish that Whitstable boats already
+            land, over a fire, without much fuss. No freezer for fish, no
+            imported seafood, and a menu that's rewritten every morning.
+          </p>
+          <p>
+            The oak for the fire comes from managed woodland in the Blean, ten
+            minutes inland. Shells go back to the oyster beds to help young
+            oysters settle.
+          </p>
+          <!-- <blockquote> is the correct element for a quotation. -->
+          <blockquote class="chef-quote">
+            If it didn't come out of the sea this morning, it isn't on the menu tonight.
+            <cite>Tom Ashdown, head chef</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== 3. SUPPLIERS ===================== -->
+    <section class="section section--marsh" aria-labelledby="suppliers-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="label">Where it comes from</p>
+          <h2 id="suppliers-title">The people we cook with</h2>
+          <p>Distances are measured from our kitchen door.</p>
+        </div>
+
+        <ul class="suppliers">
+          <li class="supplier reveal">
+            <span class="supplier__miles">2 miles</span>
+            <h3>Seasalter oyster beds</h3>
+            <p>Rock and native oysters, picked by hand at low tide.</p>
+          </li>
+          <li class="supplier reveal">
+            <span class="supplier__miles">0.1 miles</span>
+            <h3>Whitstable day boats</h3>
+            <p>Plaice, bream, squid and thornback ray, landed on the harbour wall.</p>
+          </li>
+          <li class="supplier reveal">
+            <span class="supplier__miles">28 miles</span>
+            <h3>Romney Marsh farms</h3>
+            <p>Salt-marsh lamb, reared on the grazing that gives our name.</p>
+          </li>
+          <li class="supplier reveal">
+            <span class="supplier__miles">9 miles</span>
+            <h3>Faversham orchards</h3>
+            <p>Apples, pears, gooseberries and the cider in our hake sauce.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ===================== 4. GALLERY ===================== -->
+    <section class="section" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="label">Gallery</p>
+          <h2 id="gallery-title">A look inside</h2>
+          <p>Select a photo to see it larger. Use the arrow keys to move between photos.</p>
+        </div>
+
+        <!-- Each tile is a <button>, so it can be opened with a keyboard
+             (Tab to it, then Enter or Space). -->
+        <div class="gallery">
+          <button class="gallery__item" type="button" aria-label="Open photo 1 of 6: the oyster counter">
+            <figure class="photo" data-label="Photo: the oyster counter">
+              <img src="images/gallery-1.jpg" alt="Oysters being opened at the marble counter" loading="lazy" width="1200" height="800">
+            </figure>
+          </button>
+          <button class="gallery__item" type="button" aria-label="Open photo 2 of 6: the harbour at low tide">
+            <figure class="photo photo--sand" data-label="Photo: the harbour at low tide">
+              <img src="images/gallery-2.jpg" alt="Whitstable harbour at low tide with boats on the mud" loading="lazy" width="1200" height="800">
+            </figure>
+          </button>
+          <button class="gallery__item" type="button" aria-label="Open photo 3 of 6: grilled squid">
+            <figure class="photo photo--marsh" data-label="Photo: grilled squid">
+              <img src="images/gallery-3.jpg" alt="Grilled squid with samphire on a stoneware plate" loading="lazy" width="1200" height="800">
+            </figure>
+          </button>
+          <button class="gallery__item" type="button" aria-label="Open photo 4 of 6: the oak fire">
+            <figure class="photo photo--marsh" data-label="Photo: the oak fire">
+              <img src="images/gallery-4.jpg" alt="Flames from the oak fire grill in the open kitchen" loading="lazy" width="1200" height="800">
+            </figure>
+          </button>
+          <button class="gallery__item" type="button" aria-label="Open photo 5 of 6: a table for two">
+            <figure class="photo" data-label="Photo: a table for two">
+              <img src="images/gallery-5.jpg" alt="A window table for two looking out over the harbour" loading="lazy" width="1200" height="800">
+            </figure>
+          </button>
+          <button class="gallery__item" type="button" aria-label="Open photo 6 of 6: burnt honey tart">
+            <figure class="photo photo--sand" data-label="Photo: burnt honey tart">
+              <img src="images/gallery-6.jpg" alt="A slice of burnt honey tart with crème fraîche" loading="lazy" width="1200" height="800">
+            </figure>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== LIGHTBOX (photo viewer) =====================
+       role="dialog" + aria-modal="true" tells screen readers this is a pop-up
+       that sits on top of the page. It starts closed; about.js opens it. -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Close photo viewer">✕</button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Previous photo">←</button>
+    <figure class="lightbox__figure">
+      <div class="photo" id="lightbox-photo" data-label="">
+        <img id="lightbox-img" alt="">
+      </div>
+      <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="Next photo">→</button>
+  </div>
+
+  <!-- ===================== SITE FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="index.html">
+            <span class="logo__name">Saltmarsh</span>
+            <span class="logo__place">Whitstable</span>
+          </a>
+          <p style="margin-top: 1rem">Seafood &amp; wood fire on the harbour since 2019.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">Our story</a></li>
+            <li><a href="book.html">Book a table</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>14 Harbour Street, Whitstable CT5 1AQ</li>
+            <li>01632 960 418</li>
+            <li>hello@saltmarsh.example</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kitchen hours</h4>
+          <ul>
+            <li>Wed–Thu · dinner</li>
+            <li>Fri–Sat · lunch &amp; dinner</li>
+            <li>Sun · lunch</li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Saltmarsh. A fictional restaurant.</p>
+        <p>Designed and built by Molly Hoy as a portfolio project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/about.js"></script>
+</body>
+</html>

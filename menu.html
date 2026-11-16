@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     SALTMARSH — Menu page (menu.html)
+     --------------------------------------------------------------------------
+     The menu is written in plain HTML, and menu.js adds filtering on top.
+     Each dish is an <li class="dish"> with data-* attributes that describe it:
+
+       data-diet="v gf"   → dietary tags, separated by spaces
+                            (v = vegetarian, gf = gluten-free, df = dairy-free)
+
+     Each course is a <section class="menu-course" data-course="...">.
+     JavaScript reads these attributes to decide what to show or hide.
+     ========================================================================== -->
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This week's menu at Saltmarsh, Whitstable: oysters, small plates, wood-fired mains and puddings, with dietary and allergen information.">
+  <meta name="theme-color" content="#13222a">
+  <title>Menu — Saltmarsh, Whitstable</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2313222a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23c09040'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== SITE HEADER ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Saltmarsh home page">
+        <span class="logo__name">Saltmarsh</span>
+        <span class="logo__place">Whitstable</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bars"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html" aria-current="page">Menu</a></li>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="book.html">Visit</a></li>
+        </ul>
+        <a class="btn btn--ink" href="book.html">Book a table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="label">Week of 16 November</p>
+        <h1>This week's menu</h1>
+        <p>Written each morning from what the boats bring in, so some dishes may change by the evening service.</p>
+      </div>
+    </section>
+
+    <!-- ===================== FILTER BAR =====================
+         The controls are real <button>s and <input>s, so they work with a
+         keyboard and screen reader without any extra effort. -->
+    <div class="menu-filters">
+      <div class="container menu-filters__inner">
+
+        <!-- role="group" + aria-label tells assistive tech these buttons belong together. -->
+        <div class="chip-group" role="group" aria-label="Filter by course">
+          <button class="chip" type="button" data-course-filter="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-course-filter="raw" aria-pressed="false">Raw bar</button>
+          <button class="chip" type="button" data-course-filter="small" aria-pressed="false">Small plates</button>
+          <button class="chip" type="button" data-course-filter="mains" aria-pressed="false">Mains</button>
+          <button class="chip" type="button" data-course-filter="puddings" aria-pressed="false">Puddings</button>
+        </div>
+
+        <div class="filter-extras">
+          <label class="check"><input type="checkbox" id="filter-v" value="v"> Vegetarian</label>
+          <label class="check"><input type="checkbox" id="filter-gf" value="gf"> Gluten-free</label>
+          <label class="check"><input type="checkbox" id="filter-df" value="df"> Dairy-free</label>
+
+          <div class="search">
+            <label class="visually-hidden" for="menu-search">Search the menu</label>
+            <input type="search" id="menu-search" placeholder="Search dishes" autocomplete="off">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== THE MENU ===================== -->
+    <div class="section section--tight">
+      <div class="container">
+
+        <!-- aria-live="polite": screen readers announce this text whenever it changes. -->
+        <p class="menu-count" id="menu-count" aria-live="polite">Showing all 17 dishes</p>
+
+        <!-- ---------- RAW BAR ---------- -->
+        <section class="menu-course" data-course="raw" aria-labelledby="course-raw">
+          <div>
+            <h2 id="course-raw">Raw bar</h2>
+            <p class="menu-course__note">Oysters are served by the piece, and only when the tide allows picking.</p>
+          </div>
+          <ul class="dish-list">
+            <li class="dish" data-diet="gf df">
+              <div class="dish__head">
+                <h3 class="dish__name">Seasalter rock oysters</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£3.50 each</span>
+              </div>
+              <p class="dish__desc">Shallot mignonette, lemon.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Gluten-free">GF</abbr><abbr class="diet-tag" title="Dairy-free">DF</abbr></span>
+                <span class="dish__allergens">Contains: molluscs, sulphites</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="gf df">
+              <div class="dish__head">
+                <h3 class="dish__name">Whitstable native oysters</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£4.80 each</span>
+              </div>
+              <p class="dish__desc">September to April only. Served plain, with lemon.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Gluten-free">GF</abbr><abbr class="diet-tag" title="Dairy-free">DF</abbr></span>
+                <span class="dish__allergens">Contains: molluscs</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="gf df">
+              <div class="dish__head">
+                <h3 class="dish__name">Sea bream crudo</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£11</span>
+              </div>
+              <p class="dish__desc">Blood orange, shaved fennel, green chilli, cold-pressed rapeseed oil.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Gluten-free">GF</abbr><abbr class="diet-tag" title="Dairy-free">DF</abbr></span>
+                <span class="dish__allergens">Contains: fish</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ---------- SMALL PLATES ---------- -->
+        <section class="menu-course" data-course="small" aria-labelledby="course-small">
+          <div>
+            <h2 id="course-small">Small plates</h2>
+            <p class="menu-course__note">Two or three per person, to share.</p>
+          </div>
+          <ul class="dish-list">
+            <li class="dish" data-diet="v">
+              <div class="dish__head">
+                <h3 class="dish__name">Wood-roast leeks</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£9</span>
+              </div>
+              <p class="dish__desc">Hazelnut romesco, aged Kentish cheddar.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr></span>
+                <span class="dish__allergens">Contains: nuts, milk</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="">
+              <div class="dish__head">
+                <h3 class="dish__name">Smoked cod's roe</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£8</span>
+              </div>
+              <p class="dish__desc">Whipped with lemon, on fire-blistered sourdough flatbread.</p>
+              <div class="dish__meta">
+                <span class="dish__allergens">Contains: fish, gluten, milk</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="gf df">
+              <div class="dish__head">
+                <h3 class="dish__name">Grilled Whitstable squid</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£12</span>
+              </div>
+              <p class="dish__desc">'Nduja, samphire, charred lemon.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Gluten-free">GF</abbr><abbr class="diet-tag" title="Dairy-free">DF</abbr></span>
+                <span class="dish__allergens">Contains: molluscs</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="v gf">
+              <div class="dish__head">
+                <h3 class="dish__name">Crispy Jersey Royals</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£7</span>
+              </div>
+              <p class="dish__desc">Seaweed salt, smoked garlic aioli.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr><abbr class="diet-tag" title="Gluten-free">GF</abbr></span>
+                <span class="dish__allergens">Contains: eggs, mustard</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ---------- MAINS ---------- -->
+        <section class="menu-course" data-course="mains" aria-labelledby="course-mains">
+          <div>
+            <h2 id="course-mains">From the fire</h2>
+            <p class="menu-course__note">Cooked over oak. Whole fish may take 25 minutes.</p>
+          </div>
+          <ul class="dish-list">
+            <li class="dish" data-diet="gf">
+              <div class="dish__head">
+                <h3 class="dish__name">Whole grilled plaice</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£26</span>
+              </div>
+              <p class="dish__desc">Brown shrimp butter, capers, charred lemon.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Gluten-free">GF</abbr></span>
+                <span class="dish__allergens">Contains: fish, crustaceans, milk</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="">
+              <div class="dish__head">
+                <h3 class="dish__name">Fire-roast hake</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£24</span>
+              </div>
+              <p class="dish__desc">Mussel and Kentish cider sauce, monk's beard, toasted crumb.</p>
+              <div class="dish__meta">
+                <span class="dish__allergens">Contains: fish, molluscs, milk, gluten, sulphites</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="gf df">
+              <div class="dish__head">
+                <h3 class="dish__name">Romney Marsh lamb rump</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£27</span>
+              </div>
+              <p class="dish__desc">Salsa verde, braised white beans, grilled wild garlic.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Gluten-free">GF</abbr><abbr class="diet-tag" title="Dairy-free">DF</abbr></span>
+                <span class="dish__allergens">Contains: fish (anchovy), mustard</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="v">
+              <div class="dish__head">
+                <h3 class="dish__name">Charred hispi cabbage</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£18</span>
+              </div>
+              <p class="dish__desc">Miso butter, crispy shallots, toasted buckwheat.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr></span>
+                <span class="dish__allergens">Contains: soya, milk</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="">
+              <div class="dish__head">
+                <h3 class="dish__name">Harbour fish stew, for two</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£58</span>
+              </div>
+              <p class="dish__desc">Whatever the day boats land, in a saffron and tomato broth with rouille and grilled bread.</p>
+              <div class="dish__meta">
+                <span class="dish__allergens">Contains: fish, crustaceans, molluscs, celery, gluten, eggs</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ---------- PUDDINGS ---------- -->
+        <section class="menu-course" data-course="puddings" aria-labelledby="course-puddings">
+          <div>
+            <h2 id="course-puddings">Puddings &amp; cheese</h2>
+          </div>
+          <ul class="dish-list">
+            <li class="dish" data-diet="v">
+              <div class="dish__head">
+                <h3 class="dish__name">Burnt honey tart</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£8</span>
+              </div>
+              <p class="dish__desc">Blean honey, crème fraîche.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr></span>
+                <span class="dish__allergens">Contains: gluten, eggs, milk</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="v">
+              <div class="dish__head">
+                <h3 class="dish__name">Gooseberry fool</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£8</span>
+              </div>
+              <p class="dish__desc">Elderflower shortbread.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr></span>
+                <span class="dish__allergens">Contains: milk, gluten, eggs</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="v gf">
+              <div class="dish__head">
+                <h3 class="dish__name">Sea-salt chocolate pot</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£7</span>
+              </div>
+              <p class="dish__desc">Dark chocolate, Maldon salt, a little olive oil.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr><abbr class="diet-tag" title="Gluten-free">GF</abbr></span>
+                <span class="dish__allergens">Contains: milk, eggs</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="v df">
+              <div class="dish__head">
+                <h3 class="dish__name">Blackberry &amp; apple sorbet</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£6</span>
+              </div>
+              <p class="dish__desc">Fruit from Faversham orchards.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr><abbr class="diet-tag" title="Dairy-free">DF</abbr></span>
+                <span class="dish__allergens">No major allergens</span>
+              </div>
+            </li>
+            <li class="dish" data-diet="v">
+              <div class="dish__head">
+                <h3 class="dish__name">Three Kentish cheeses</h3>
+                <span class="dish__leader" aria-hidden="true"></span>
+                <span class="dish__price">£12</span>
+              </div>
+              <p class="dish__desc">Oatcakes, quince, celery.</p>
+              <div class="dish__meta">
+                <span class="diet-tags"><abbr class="diet-tag" title="Vegetarian">V</abbr></span>
+                <span class="dish__allergens">Contains: milk, gluten, celery, sulphites</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Shown by menu.js only when nothing matches the filters. -->
+        <div class="menu-empty" id="menu-empty" hidden>
+          <h2>No dishes match those filters</h2>
+          <p>Try removing a dietary filter or searching for something else.</p>
+          <button class="btn btn--ink" type="button" id="menu-reset">Clear all filters</button>
+        </div>
+
+        <aside class="allergen-notice">
+          <h4>Allergies &amp; intolerances</h4>
+          <p>
+            The allergens listed are the 14 major allergens recognised in UK law.
+            Our kitchen handles all of them, so we can't promise any dish is
+            completely free of traces. Please tell us about allergies when you
+            book and again when you order.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== SITE FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="index.html">
+            <span class="logo__name">Saltmarsh</span>
+            <span class="logo__place">Whitstable</span>
+          </a>
+          <p style="margin-top: 1rem">Seafood &amp; wood fire on the harbour since 2019.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">Our story</a></li>
+            <li><a href="book.html">Book a table</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>14 Harbour Street, Whitstable CT5 1AQ</li>
+            <li>01632 960 418</li>
+            <li>hello@saltmarsh.example</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kitchen hours</h4>
+          <ul>
+            <li>Wed–Thu · dinner</li>
+            <li>Fri–Sat · lunch &amp; dinner</li>
+            <li>Sun · lunch</li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Saltmarsh. A fictional restaurant.</p>
+        <p>Designed and built by Molly Hoy as a portfolio project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- main.js first (shared code), then this page's own script. -->
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>

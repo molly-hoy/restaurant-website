@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     SALTMARSH — Book a table (book.html)
+     --------------------------------------------------------------------------
+     A booking form with custom validation (booking.js), plus a sidebar with
+     opening hours and contact details.
+
+     The <form> has `novalidate`, which turns off the browser's built-in
+     error bubbles. We still use HTML attributes like `required` (they help
+     screen readers), but booking.js shows our own, friendlier messages.
+     ========================================================================== -->
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Book a table at Saltmarsh, Whitstable. Opening hours, address and how to find us.">
+  <meta name="theme-color" content="#13222a">
+  <title>Book a table — Saltmarsh, Whitstable</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2313222a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23c09040'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== SITE HEADER ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Saltmarsh home page">
+        <span class="logo__name">Saltmarsh</span>
+        <span class="logo__place">Whitstable</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bars"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="book.html" aria-current="page">Visit</a></li>
+        </ul>
+        <a class="btn btn--ink" href="book.html">Book a table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="label">Reservations</p>
+        <h1>Book a table</h1>
+        <p>Online booking is open for up to 60 days ahead, for groups of 1 to 8. Larger groups, please call us.</p>
+        <p class="status-pill" data-open-status style="margin-top: 1.5rem">
+          <span class="status-pill__dot" aria-hidden="true"></span>
+          <span class="status-pill__text">Checking opening hours…</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container booking__grid">
+
+        <div>
+          <!-- ===================== BOOKING FORM ===================== -->
+          <form class="booking-form" id="booking-form" novalidate>
+
+            <!-- Fieldset 1: the booking itself -->
+            <fieldset>
+              <legend>Your table</legend>
+
+              <div class="field">
+                <label for="date">Date</label>
+                <!-- aria-describedby links the field to its hint and error text,
+                     so screen readers read them out with the label. -->
+                <input type="date" id="date" name="date" required aria-describedby="date-hint date-error">
+                <p class="field__hint" id="date-hint">Closed Mondays and Tuesdays.</p>
+                <p class="field__error" id="date-error"></p>
+              </div>
+
+              <div class="field">
+                <label for="time">Time</label>
+                <!-- Starts disabled; booking.js fills it with times for the chosen day. -->
+                <select id="time" name="time" required disabled aria-describedby="time-error">
+                  <option value="">Choose a date first</option>
+                </select>
+                <p class="field__error" id="time-error"></p>
+              </div>
+
+              <div class="field">
+                <label for="guests">Guests</label>
+                <select id="guests" name="guests" required aria-describedby="guests-error">
+                  <option value="">Select</option>
+                  <option value="1">1 guest</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5">5 guests</option>
+                  <option value="6">6 guests</option>
+                  <option value="7">7 guests</option>
+                  <option value="8">8 guests</option>
+                  <option value="9+">9 or more</option>
+                </select>
+                <p class="field__error" id="guests-error"></p>
+              </div>
+
+              <div class="field">
+                <label for="occasion">Occasion <span class="optional">(optional)</span></label>
+                <select id="occasion" name="occasion">
+                  <option value="">None</option>
+                  <option>Birthday</option>
+                  <option>Anniversary</option>
+                  <option>Business</option>
+                  <option>Other celebration</option>
+                </select>
+              </div>
+
+              <!-- Shown by booking.js when "9 or more" is chosen. -->
+              <p class="notice" id="large-group" hidden>
+                For groups of 9 or more we offer a set menu in our back room.
+                Please call us on <strong>01632 960 418</strong> to arrange it.
+              </p>
+            </fieldset>
+
+            <!-- Fieldset 2: contact details -->
+            <fieldset>
+              <legend>Your details</legend>
+
+              <div class="field field--full">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+                <p class="field__error" id="name-error"></p>
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <!-- type="email" brings up the @ keyboard on phones. -->
+                <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+                <p class="field__error" id="email-error"></p>
+              </div>
+
+              <div class="field">
+                <label for="phone">Mobile number</label>
+                <!-- type="tel" brings up the number keypad on phones. -->
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required aria-describedby="phone-hint phone-error">
+                <p class="field__hint" id="phone-hint">A UK number, in case we need to reach you on the day.</p>
+                <p class="field__error" id="phone-error"></p>
+              </div>
+
+              <div class="field field--full">
+                <label for="requests">Allergies or requests <span class="optional">(optional)</span></label>
+                <textarea id="requests" name="requests" maxlength="400" aria-describedby="requests-hint"></textarea>
+                <p class="field__hint" id="requests-hint"><span id="requests-count">0</span> of 400 characters</p>
+              </div>
+
+              <div class="field field--full">
+                <label class="consent" for="consent">
+                  <input type="checkbox" id="consent" name="consent" required aria-describedby="consent-error">
+                  <span>I understand that tables are held for 15 minutes after the booking time.</span>
+                </label>
+                <p class="field__error" id="consent-error"></p>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="btn btn--ink" type="submit">Request booking</button>
+              <p class="field__hint">This is a demo site: no real booking is made and nothing is sent.</p>
+            </div>
+          </form>
+
+          <!-- ===================== CONFIRMATION =====================
+               tabindex="-1" lets JavaScript move focus here, so screen
+               readers announce the confirmation straight away. -->
+          <div class="confirmation" id="confirmation" tabindex="-1" hidden>
+            <p class="label">Request received</p>
+            <h2>Thank you, <span id="confirm-name"></span></h2>
+            <dl class="summary" id="confirm-summary"></dl>
+            <p class="demo-note">This is a demo: no booking has been made and no email has been sent. On a live site, the details would be sent to a booking system here.</p>
+            <p><button class="btn btn--ghost" type="button" id="book-again">Make another booking</button></p>
+          </div>
+        </div>
+
+        <!-- ===================== SIDEBAR ===================== -->
+        <aside class="booking-aside" aria-label="Opening hours and contact details">
+          <div>
+            <h2>Opening hours</h2>
+            <dl class="hours-list">
+              <dt data-day="1">Monday</dt>    <dd data-day="1">Closed</dd>
+              <dt data-day="2">Tuesday</dt>   <dd data-day="2">Closed</dd>
+              <dt data-day="3">Wednesday</dt> <dd data-day="3">17:30–22:00</dd>
+              <dt data-day="4">Thursday</dt>  <dd data-day="4">17:30–22:00</dd>
+              <dt data-day="5">Friday</dt>    <dd data-day="5">12:00–15:00, 17:30–22:30</dd>
+              <dt data-day="6">Saturday</dt>  <dd data-day="6">12:00–15:00, 17:30–22:30</dd>
+              <dt data-day="0">Sunday</dt>    <dd data-day="0">12:00–16:00</dd>
+            </dl>
+            <p class="field__hint" style="color: rgb(241 238 231 / 0.7); margin-top: 0.75rem">Last tables are seated one hour before closing.</p>
+          </div>
+
+          <div>
+            <h2>Find us</h2>
+            <address>
+              14 Harbour Street<br>
+              Whitstable, Kent CT5 1AQ
+            </address>
+            <p style="margin-top: 0.75rem">Five minutes' walk from Whitstable station, on the corner opposite the harbour gates.</p>
+          </div>
+
+          <div>
+            <h2>Get in touch</h2>
+            <p>Phone: 01632 960 418<br>Email: hello@saltmarsh.example</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== SITE FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="index.html">
+            <span class="logo__name">Saltmarsh</span>
+            <span class="logo__place">Whitstable</span>
+          </a>
+          <p style="margin-top: 1rem">Seafood &amp; wood fire on the harbour since 2019.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">Our story</a></li>
+            <li><a href="book.html">Book a table</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>14 Harbour Street, Whitstable CT5 1AQ</li>
+            <li>01632 960 418</li>
+            <li>hello@saltmarsh.example</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kitchen hours</h4>
+          <ul>
+            <li>Wed–Thu · dinner</li>
+            <li>Fri–Sat · lunch &amp; dinner</li>
+            <li>Sun · lunch</li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> Saltmarsh. A fictional restaurant.</p>
+        <p>Designed and built by Molly Hoy as a portfolio project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
