@@ -2,7 +2,7 @@
 
 A four-page website for **Saltmarsh**, a fictional seafood and wood-fire restaurant on Whitstable harbour. It's built with plain HTML, CSS and JavaScript, with no frameworks or libraries.
 
-**Live demo:** _add your Netlify/Vercel link here_
+**Live demo:** _saltmarshwhitstable.netlify.app_
 **Built by:** _Molly Hoy_
 
 ![Home page screenshot](screenshots/home.png)
